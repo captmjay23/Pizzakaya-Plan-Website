@@ -1,0 +1,653 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&family=Raleway:wght@400;500;700&display=swap');
+:root{
+  /* FONT */
+  --ff-body-text:'Poppins', sans-serif;
+  --ff-title:'Raleway', sans-serif;
+  /* COLOR */
+  --primary-clr:#f8f9fa;
+  --secondary-clr:#3f3f3f;
+}
+*{
+  padding: 0;
+  margin: 0;
+}
+*,
+*::before,
+*::after{
+  box-sizing: inherit;
+}
+html{
+  box-sizing: border-box;
+}
+body{
+  line-height: 2;
+  font-family: var(--ff-body-text);
+}
+img{
+  width: 100%;
+}
+h1,h2,h3,h4{
+  font-weight: 400;
+}
+/* GLOBAL */
+.grid-wrapper{
+  display: grid;
+  grid-gap: 1.2em;
+}
+/* HEADER */
+.header{
+  width: 100%;
+  background-color: var(--primary-clr);
+  position: sticky;
+  z-index: 999;
+}
+/* HEADER > BRANDING LOGO */
+.branding-logo {
+  float: left;
+  padding: 1em 1em 0;
+}
+/* HEADER > NAVIGATION MENU */
+#menu-toggler{
+  display: none;
+}
+.menu{
+  width: 1.5em;
+  height: 1.5em;
+  margin: 2em 1em 0;
+  float: right;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 2px;
+}
+.menu-icon{
+  width: 90%;
+  height: 3px;
+  background-color: var(--secondary-clr);
+  border-radius: 10px;
+  position: relative;
+  transition: background-color .2s ease-in-out;
+}
+.menu-icon::before,
+.menu-icon::after{
+  content: '';
+  width: 100%;
+  height: 3px;
+  background-color: var(--secondary-clr);
+  border-radius: 10px;
+  position: absolute;
+  transition: transform .2s ease-in-out;
+}
+.menu-icon::before{
+  transform: translateY(-6px);
+}
+.menu-icon::after{
+  transform: translateY(6px);
+}
+#menu-toggler:checked ~ .menu .menu-icon{
+  background-color: transparent;
+}
+#menu-toggler:checked ~ .menu .menu-icon::before{
+  transform: rotate(45deg);
+}
+#menu-toggler:checked ~ .menu .menu-icon::after{
+  transform: rotate(-45deg);
+}
+/* HEADER > NAVIGATION */
+.navbar{
+  clear: both;
+  padding: 1em 0 1em;
+}
+.nav-ul{
+  list-style-type: none;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height .5s ease-in-out;
+}
+.nav-ul li{
+  display: block;
+}
+.nav-ul li a{
+  display: block;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.527);
+  padding: 1em;
+}
+.nav-ul li a:hover{
+  background-color: #fffecb;
+}
+#menu-toggler:checked ~ .navbar .nav-ul{
+  max-height: 250px;
+}
+@media (min-width: 36em){
+  .menu{
+    display: none;
+  }
+  .header{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .nav-ul{
+    max-height: 250px;
+  }
+  .nav-ul li{
+    display: inline-block;
+  }
+  .nav-ul li a:hover{
+    color: rgb(109, 109, 109);
+    background-color: unset;
+  }
+}
+/* CAROUSEL IMAGE SHOWCASE */
+.carousel-inner{
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+.carousel-item{
+  width: 500%;
+  animation-name: carousel-showcase;
+  animation-duration: 15s;
+  animation-iteration-count: infinite;
+  position: relative;
+}
+.carousel-item img{
+  float: left;
+  width: 20%;
+  height: 75vh; 
+  position: relative;
+}
+.carousel-caption{
+  position: absolute;
+  top: 0;
+  left: 10%;
+  transform: translateX(-50%);
+  margin-top: 8em;
+  text-align: center;
+}
+.carousel-caption h1{
+  font-size: 3rem;
+  font-family: var(--ff-title);
+
+  text-shadow: 2px 2px 10px;
+  background-color: #b3b3b349;
+}
+.carousel-caption p{
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: white;
+  text-shadow: 2px 2px 10px;
+}
+.accent-clr-red{
+  color: red;
+}
+.accent-clr-green{
+  color: green;
+}
+.accent-clr-yellow{
+  color: rgb(184, 184, 0);
+}
+@keyframes carousel-showcase{
+  0%{
+    margin-left: 0;
+  }
+  8%{
+    margin-left: 0;
+  }
+  16%{
+    margin-left: 0;
+  }
+  32%{
+    margin-left: -100%;
+  }
+  48%{
+    margin-left: -100%;
+  }
+  55%{
+    margin-left: -100%;
+  }
+  64%{
+    margin-left: -200%;
+  }
+  80%{
+    margin-left: -200%;
+  }
+  90%{
+    margin-left: -200%;
+  }
+  100%{
+    margin-left: 0;
+  }
+}
+/**********************************
+      MORE PIZZA QOUTES
+***********************************/
+.quotes-content{
+  display: flex;
+  flex-direction: column;
+  padding: 2em;
+  background-color: var(--primary-clr);
+}
+.quotes-content p{
+  font-size: 1.2rem;
+}
+.quotes-content a{
+  display: inline-block;
+}
+/**********************************
+      SERVICES SHOWCASE
+***********************************/
+.services-showcase{
+  padding: 0 1.2em;
+  text-align: center;
+}
+.services-intro{
+  width: 100%;
+  padding: 0 1.2em;
+  margin: 2em auto 5em;
+}
+.services-intro h1{
+  font-size: 2rem;
+  line-height: 1.2;
+}
+.myHr-red{
+  width: 80%;
+  margin: 1em auto;
+  border: 2px solid red;
+  animation-name: horizontal-movement;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+.myHr-green{
+  width: 80%;
+  margin: 1em auto;
+  border: 2px solid green;
+  animation-name: horizontal-movement;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+.myHr-yellow{
+  width: 80%;
+  margin: 1em auto;
+  border: 2px solid yellow;
+  animation-name: horizontal-movement;
+  animation-duration: 6s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+@keyframes horizontal-movement{
+  0%{
+    transform: translateX(10%);
+  }
+  50%{
+    transform: translateX(-10%);
+  }
+  100%{
+    transform: translateX(10%);
+  }
+}
+.service{
+  margin: 0 0 2.5em;
+}
+.service img{
+  width: 199px;
+  height: 169px;
+}
+.service-caption p,
+.services-intro p{
+  font-size: 1.3rem;
+}
+.myHr{
+  border: 1px solid #3f3f3f5d;
+  margin: 1em 0;
+}
+/***********************************
+            ABOUT US SECTION
+***********************************/
+.about-us{
+  padding: 0 1.2em;
+}
+.about-us h1{
+  font-size: 3rem;
+}
+.about-us p{
+  font-size: 1.3rem;
+  margin-bottom: 1em;
+}
+/***********************************
+            PIZZA SHOWCASE
+***********************************/
+#btn-collapse{
+  display: none;
+}
+.pizza-showcase{
+  padding: 1.2em;
+}
+.btn-for-fun{
+  width: 100%;
+  font-size: 1.1rem;
+  margin-bottom: 1em;
+  padding: 1em;
+  cursor: pointer;
+  text-align: center;
+  background-color: #3f3f3f;
+  color: white;
+}
+.pizza-item{
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 1s ease-in-out;
+}
+#btn-collapse:checked ~ .pizza-item{
+  max-height: 1200px;
+}
+/***********************************
+     PIZZAKAYA HAPPY MEMORIES
+***********************************/
+.pizza-memories{
+  width: 100%;
+  padding: 0 1.2em;
+}
+.pizza-memories h1{
+  font-size: 3rem;
+  text-align: center;
+  font-weight: 400;
+  line-height: 1.2;
+}
+.memories{
+  display: flex;
+  flex-direction: column;
+  word-wrap: break-word;
+  background-clip: border-box;
+}
+.memories-item{
+  margin: 0 0 2em;
+  border: 1px solid rgba(155, 155, 155, 0.616);
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+.memories-caption{
+  padding: 1em;
+}
+.memories-caption h3{
+  font-size: 1.3rem;
+  font-weight: 400;
+}
+.memories-caption p{
+  font-size: 1.3rem;
+}
+/***********************************
+            PIZZA BLOG
+***********************************/
+.blog{
+  padding: 0 1.2em;
+}
+.blog-intro{
+  margin-bottom: 1em;
+}
+.blog-intro h1{
+  font-size: 3rem;
+}
+.blog-intro p{
+  font-size: 1.3rem;
+}
+/***********************************
+         CONNECT WITH US
+***********************************/
+.connect-with-us{
+  padding: 0 1.2em;
+  text-align: center;
+  margin: 0 0 1em;
+}
+.connect-with-us h1{
+  font-size: 1.75rem;
+}
+.fab{
+  margin: 0 1em;
+}
+.fa-facebook{
+  color: #4267B2;
+}
+.fa-instagram{
+  color: #405DE6;
+}
+.fa-twitter{
+  color:  #1DA1F2;
+}
+/***********************************
+        GOOGLE MAP PIZZAKAYA
+***********************************/
+#map{
+  width: 100%;
+  height: 400px;
+}
+/***********************************
+          PIZZAKAYA INFO
+***********************************/
+.pizzakaya-info{
+  text-align: center;
+  background-color: var(--secondary-clr);
+  color: white;
+  padding: 1em;
+}
+.pizzakaya-col{
+  margin: 1.5em 0;
+}
+.pizzakaya-col img{
+  width: 170px;
+  height: 49px;
+}
+/***********************************
+        MENU PAGES
+***********************************/
+.menu-showcase{
+  width: 100%;
+  margin-top: 1em;
+}
+.menu-showcase h1{
+  font-size: 2.75rem;
+  text-align: center;
+  line-height: 1.5;
+}
+.menu-item{
+  padding: 1em;
+  background-color: var(--primary-clr);
+  display: grid;
+  grid-gap: 1em;
+}
+.card{
+  height: 100%;
+  margin: 0 0 3em;
+  border: 1px solid rgba(155, 155, 155, 0.616);
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, .8);
+  background-image:
+  linear-gradient(
+    to right, 
+    white,
+    #ffffcc
+  );
+}
+.card img{
+  max-width: 100%;
+  height: 400px;
+}
+.card-body{
+  padding: 0 1em 1em;
+}
+.card-body p{
+  padding: 0 1em;
+}
+.card-body h3,
+.card-body h4{
+  font-weight: 400;
+  font-size: 1.75rem;
+}
+/***********************************
+          FOOTER
+***********************************/
+.footer{
+  background-color: var(--secondary-clr);
+  color: white;
+  text-align: center;
+}
+/***********************************
+            BUTTON
+***********************************/
+.btn{
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.842);
+  border: 2px solid #6c757d;
+  border-radius: 6px;
+  padding: .5em 1em;
+  transition: background-color .2s ease-in-out;
+}
+.btn-read-more{
+  display: inline-block;
+  margin-top: 1em;
+}
+.btn-read-more:hover{
+  background-color: #6c757d;
+  color: white;
+}
+/* SHOWCASE BUTTON */
+.btn-order{
+  color: white;
+  border: 2px solid white;
+  display: inline-block;
+  margin-top: 1em;
+}
+.btn-menu{
+  border: 2px solid green;
+  color: white;
+  display: inline-block;
+}
+.btn-menu:hover{
+  background-color: green;
+  color: yellow;
+}
+.btn-order:hover{
+  background-color: white;
+  color: black;
+}
+/* ABOUT US BUTTON */
+.btn-learn-more{
+  display: inline-block;
+  margin: 0 0 1em;
+  padding: .2em 1.5em;
+}
+.btn-learn-more:hover{
+  background-color: #6c757d;
+  color: white;
+}
+/******************************
+  MEDIA QUERIES MIN-WIDTH: 36em
+*******************************/
+@media(min-width: 36em){
+  .connect-with-us h1{
+    font-size: 2rem;
+  }
+  .quotes-content{
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  }
+  .quotes-text{
+    margin-right: 1em;
+  }
+  .services{
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .service{
+    max-width: 50%;
+  }
+  .service-12{
+    max-width: 100%;
+  }
+  .memories{
+    margin-bottom: 2em;
+  }
+  .pizza-memories h1{
+    font-size: 6rem;
+  }
+  .pizza-item img{
+    width: 100%;
+    height: 250px;
+  }
+  .menu-item{
+    max-width: 100em;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(400px, 2fr));
+  }
+}
+@media(min-width: 48em){
+  .carousel-caption h1{
+    font-size: 5rem;
+    font-family: var(--ff-title);
+    text-shadow: 2px 2px 10px;
+    background-color: #b3b3b349;
+  }
+  .memories{
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .memories-item{
+    margin: 0 .7em;
+    flex: 0 0 30%;
+    max-width: 30%;
+    height: 100%;
+  }
+  .pizzakaya-info{
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .pizzakaya-col{
+    flex: 33.33%;
+  }
+  .pizza-item{
+    display: grid;
+    grid-gap: 1em;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  #btn-collapse:checked ~ .pizza-item{
+    max-height: 550px;
+  }
+}
+@media(min-width: 62em){
+  .carousel-caption h1{
+    font-size: 6rem;
+  }
+  .service{
+    width: 33.33%;
+  }
+  .about-us{
+    display: flex;
+  }
+  .about-us-col{
+    flex: 50%;
+  }
+  .blog{
+    display: flex;
+  }
+  .blog-col{
+    flex: 50%;
+  }
+  .blog-col img{
+    max-width: 100%;
+    height: auto;
+  }
+  .pizza-item{
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+  #btn-collapse:checked ~ .pizza-item{
+    max-height: 300px;
+  }
+}
